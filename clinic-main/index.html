@@ -547,7 +547,7 @@
                 <!-- Right Side: Form -->
                 <div
                     class="w-full lg:w-1/2 bg-background-alt p-8 rounded-2xl border border-gray-100 dark:border-white/5">
-                    <form class="space-y-6">
+                    <form class="space-y-6" id="booking-form">
                         <div class="grid grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label class="text-sm font-bold text-text-main" for="first-name">First Name</label>
@@ -575,6 +575,13 @@
                                 id="phone" placeholder="(555) 123-4567" type="tel" />
                         </div>
                         <div class="space-y-2">
+                            <label class="text-sm font-bold text-text-main" for="appointment-date">Preferred
+                                Date</label>
+                            <input
+                                class="w-full bg-white border border-gray-200 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary px-4 py-3 transition-colors placeholder-gray-400"
+                                id="appointment-date" type="date" required />
+                        </div>
+                        <div class="space-y-2">
                             <label class="text-sm font-bold text-text-main" for="concern">Primary Concern</label>
                             <div class="relative">
                                 <select
@@ -591,7 +598,7 @@
                         </div>
                         <button
                             class="w-full bg-text-main text-white font-bold py-4 rounded-lg mt-4 hover:bg-black transition-colors flex items-center justify-center gap-2 group shadow-lg shadow-primary/20"
-                            type="button">
+                            type="submit">
                             Schedule Appointment
                             <span
                                 class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
