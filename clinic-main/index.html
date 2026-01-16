@@ -137,15 +137,7 @@
             cursor: ew-resize;
         }
     </style>
-    <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-    }
-  }
-</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 </head>
 
 <body
@@ -401,22 +393,24 @@
     </section>
 
     <!-- 3D Braces Structure Section -->
-    <section id="braces-3d-section" class="relative w-full h-[200vh] bg-gray-50 overflow-visible">
-        <div class="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden"
-            id="canvas-container">
-            <!-- Annotations (Will be positioned by JS) -->
-            <div id="annotation-bracket"
-                class="absolute hidden bg-white/10 backdrop-blur-md border border-white/20 text-text-main rounded-xl p-4 shadow-xl z-10 max-w-[200px]">
-                <h4 class="font-bold text-sm">Ceramic Bracket</h4>
-                <p class="text-xs mt-1">Translucent material that blends with natural tooth color.</p>
-            </div>
-            <div id="annotation-wire"
-                class="absolute hidden bg-white/10 backdrop-blur-md border border-white/20 text-text-main rounded-xl p-4 shadow-xl z-10 max-w-[200px]">
-                <h4 class="font-bold text-sm">Archwire</h4>
-                <p class="text-xs mt-1">Shape-memory alloy that gently guides teeth into position.</p>
-            </div>
-            <div class="absolute bottom-10 w-full text-center pb-8 opacity-50 text-sm pointer-events-none">
-                Scroll to explore component structure
+    <!-- 3D Braces Structure Section (Static Image) -->
+    <section id="braces-image-section"
+        class="relative w-full py-24 bg-gray-50 flex justify-center items-center overflow-hidden">
+        <div class="relative w-full max-w-5xl px-6">
+            <!-- Decorative elements -->
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-10 -right-10 w-60 h-60 bg-primary/10 rounded-full blur-3xl"></div>
+
+            <!-- Image -->
+            <img src="./images/braces-macro.png" alt="Close-up of ceramic braces"
+                class="relative z-10 w-full h-auto rounded-2xl shadow-2xl transform hover:scale-[1.02] transition-transform duration-700">
+
+            <!-- Floating Annotation (Optional, static) -->
+            <div
+                class="absolute bottom-8 left-8 z-20 bg-white/10 backdrop-blur-md border border-white/20 text-text-main rounded-xl p-4 shadow-xl max-w-[240px] hidden md:block">
+                <h4 class="font-bold text-sm">Advanced Ceramic Brackets</h4>
+                <p class="text-xs mt-1">Experience the blend of durability and aesthetics with our translucent bracket
+                    technology.</p>
             </div>
         </div>
     </section>
@@ -696,7 +690,7 @@
             window.addEventListener('touchmove', handleMove);
         });
     </script>
-    <script type="module" src="./js/braces-3d.js"></script>
+
 </body>
 
 </html>
