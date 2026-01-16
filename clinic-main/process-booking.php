@@ -119,9 +119,25 @@ function sendTelegramMessage($text)
         return; // Skip if not configured
     }
 
-    $url = "https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chatId&text=" . urlencode($text) . "&parse_mode=HTML";
+    $url = "https://api.telegram.org/bot$apiToken/sendMessage";
+    $data = [
+        'chat_id' => $chatId,
+        'text' => $text,
+        'parse_mode' => 'HTML'
+    ];
 
-    // Use file_get_contents to send the request (suppress errors with @)
-    @file_get_contents($url);
+    if (function_exists('curl_init')) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Fix for local SSL issues
+        $result = curl_exec($ch);
+        curl_close($ch);
+    } else {
+        // Fallback for hosting without CURL
+        @file_get_contents($url . "?" . http_build_query($data));
+    }
 }
 ?>
