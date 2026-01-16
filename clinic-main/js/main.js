@@ -81,7 +81,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Do not await strictly to avoid delaying UI feedback too much, but good for demo
                 sendTelegramNotification(telegramMsg);
-                // ----------------------------------
+
+                // --- SEND EMAIL NOTIFICATION ---
+                // 1. Notify Admin (Missing ID yet)
+                // sendEmail('admin_booking', Object.fromEntries(formData)); 
+
+                // 2. Thank Guest
+                sendEmail('guest_thank', {
+                    first_name: formData.get('first_name'),
+                    last_name: formData.get('last_name'), // In case template uses it
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    preferred_date: formData.get('preferred_date'),
+                    to_email: formData.get('email') // Important if using auto-reply feature
+                });
+                // -------------------------------
 
 
                 // 3. Show Feedback
@@ -180,7 +194,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     `💬 <b>Nội dung:</b> ${formData.get('message')}`;
 
                 sendTelegramNotification(telegramMsg);
-                // ----------------------------------
+
+                // --- SEND EMAIL NOTIFICATION ---
+                // 1. Notify Admin
+                sendEmail('admin_message', Object.fromEntries(formData));
+
+                // 2. Thank Guest
+                sendEmail('guest_thank', {
+                    first_name: formData.get('first_name'),
+                    last_name: formData.get('last_name'),
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                    to_email: formData.get('email')
+                });
+                // -------------------------------
 
 
                 // 3. Show Feedback
@@ -259,4 +286,31 @@ async function sendTelegramNotification(message) {
     } catch (error) {
         console.error('Failed to send Telegram notification:', error);
     }
+}
+
+/**
+ * Sends Email using EmailJS
+ */
+function sendEmail(type, data) {
+    const serviceID = 'service_m89id9r';
+    const adminTemplateID = 'template_txkv5sb';
+    const guestTemplateID = 'template_jl267q6';
+
+    let templateID = '';
+    let templateParams = data;
+
+    if (type === 'guest_thank') {
+        templateID = guestTemplateID;
+    } else if (type === 'admin_booking' || type === 'admin_message') {
+        templateID = adminTemplateID;
+    }
+
+    if (!templateID) return;
+
+    emailjs.send(serviceID, templateID, templateParams)
+        .then(() => {
+            console.log(`Email (${type}) sent successfully!`);
+        }, (error) => {
+            console.error('Failed to send email:', error);
+        });
 }
