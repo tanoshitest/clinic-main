@@ -196,7 +196,7 @@
     </div>
 
     <script>
-        // Auth Guard
+        // --- AUTH GUARD ---
         if (!localStorage.getItem('admin_auth')) {
             window.location.href = 'admin-login.html';
         }
@@ -206,12 +206,13 @@
             window.location.href = 'admin-login.html';
         }
 
-        // Tab Switching
+        // --- TAB SWITCHING Logic ---
         function switchTab(tabId) {
-            // Update Navigation
+            // Update Navigation UI
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
-                if (item.onclick.toString().includes(tabId)) {
+                // Determine if this is the active tab based on the onclick attribute or ID
+                if (item.getAttribute('onclick').includes(`'${tabId}'`)) {
                     item.classList.remove('text-gray-400', 'hover:bg-white/5');
                     item.classList.add('bg-white/10', 'text-white');
                 } else {
@@ -220,23 +221,31 @@
                 }
             });
 
+            // Update Content Visibility
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
 
-            const titles = { 'appointments': 'Appointments', 'messages': 'Messages', 'blogs': 'Blog Management', 'settings': 'Settings' };
+            // Update Page Title
+            const titles = {
+                'appointments': 'Appointments',
+                'messages': 'Messages',
+                'blogs': 'Blog Management',
+                'settings': 'Settings'
+            };
             document.getElementById('page-title').textContent = titles[tabId];
 
+            // Trigger Data Load
             if (tabId === 'appointments') loadAppointments();
             if (tabId === 'messages') loadMessages();
             if (tabId === 'blogs') loadBlogs();
         }
 
-        // --- APPOINTMENT LOGIC ---
+        // --- APPOINTMENTS LOGIC ---
         function loadAppointments() {
             const tbody = document.getElementById('appointments-body');
             const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
 
-            // Filter: Only show items explicitly marked as 'appointment', or older items without type (assumed appointment)
+            // Filter: Appointments only (or legacy items with no type)
             const filtered = appointments.filter(a => !a.type || a.type === 'appointment');
 
             if (filtered.length === 0) {
@@ -267,7 +276,7 @@
             const tbody = document.getElementById('messages-body');
             const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
 
-            // Filter: Only show items marked as 'message'
+            // Filter: Messages only
             const filtered = appointments.filter(a => a.type === 'message');
 
             if (filtered.length === 0) {
@@ -292,7 +301,10 @@
                 </tr>
             `).join('');
         }
-        document.getElementById('blog-modal').classList.remove('hidden');
+
+        // --- BLOG LOGIC ---
+        function openBlogModal() {
+            document.getElementById('blog-modal').classList.remove('hidden');
         }
 
         function closeBlogModal() {
@@ -366,37 +378,7 @@
             }
         }
 
-        // --- APPOINTMENT LOGIC ---
-        function loadAppointments() {
-            const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-            const tbody = document.getElementById('appointments-body');
-            tbody.innerHTML = '';
-
-            if (appointments.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-gray-500">No appointments yet.</td></tr>';
-                return;
-            }
-
-            appointments.forEach(apt => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-gray-50 transition-colors";
-                tr.innerHTML = `
-                    <td class="px-6 py-4">
-                        <div class="font-bold text-gray-900">${apt.firstName} ${apt.lastName}</div>
-                    </td>
-                     <td class="px-6 py-4 text-gray-600 font-medium">${apt.date || 'N/A'}</td>
-                    <td class="px-6 py-4">
-                        <div class="text-sm text-gray-900 font-medium">${apt.phone}</div>
-                        <div class="text-xs text-gray-500">${apt.email}</div>
-                    </td>
-                    <td class="px-6 py-4 text-gray-600">${apt.concern}</td>
-                    <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold">New</span></td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        // Save Settings
+        // --- SETTINGS LOGIC ---
         document.getElementById('settings-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const config = {
@@ -408,20 +390,18 @@
             alert('Settings saved! Check the footer on the main site to see changes.');
         });
 
-        // Init
-        loadAppointments();
-
-        // Load existing settings if any
-        const savedSettings = JSON.parse(localStorage.getItem('clinic_contact_info'));
-        if (savedSettings) {
-            document.getElementById('setting-phone').value = savedSettings.phone || '';
-            document.getElementById('setting-email').value = savedSettings.email || '';
-            document.getElementById('setting-address').value = savedSettings.address || '';
-        }
-        // Initialize Dashboard
+        // --- INITIALIZATION ---
         window.addEventListener('DOMContentLoaded', () => {
+            // Load Settings
+            const savedSettings = JSON.parse(localStorage.getItem('clinic_contact_info'));
+            if (savedSettings) {
+                document.getElementById('setting-phone').value = savedSettings.phone || '';
+                document.getElementById('setting-email').value = savedSettings.email || '';
+                document.getElementById('setting-address').value = savedSettings.address || '';
+            }
+
+            // Load Default Tab (Appointments)
             loadAppointments();
-            // Optional: If we wanted to persist the last active tab, we could check localStorage here
         });
     </script>
 </body>
