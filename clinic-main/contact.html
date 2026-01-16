@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contact Us - Premium Dental Clinic</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11c4d4",
+                        "primary-dark": "#0e9aa7",
+                        "background-light": "#ffffff",
+                        "background-alt": "#F9FAFB",
+                        "background-dark": "#102022",
+                        "text-main": "#111718",
+                        "text-muted": "#618689",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary/30">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/20 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-lg">
+                            <span class="material-symbols-outlined text-[24px]">dentistry</span>
+                        </div>
+                        <span class="text-text-main text-xl font-bold tracking-tight">Premium<span
+                                class="text-primary">Dental</span></span>
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="about.html">About</a>
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="services.html">Services</a>
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="blog.html">Blog</a>
+                    <a class="text-sm font-semibold text-primary transition-colors" href="contact.html">Contact</a>
+                </div>
+                <!-- CTA -->
+                <div class="hidden md:block">
+                    <button
+                        class="bg-text-main hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                        Book Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="py-32 bg-background-alt text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="font-serif text-5xl md:text-6xl text-text-main mb-6">Contact Us</h1>
+            <p class="text-lg text-text-muted max-w-2xl mx-auto">We're here to answer your questions and help you
+                achieve your perfect smile.</p>
+        </div>
+    </header>
+
+    <!-- Contact Content -->
+    <main class="py-24">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div class="space-y-12">
+                    <div>
+                        <h2 class="font-serif text-3xl text-text-main mb-6">Get in Touch</h2>
+                        <p class="text-text-muted text-lg mb-8">
+                            Whether you're a new patient or a returning one, we're always happy to hear from you.
+                            Reach out to us via phone, email, or visit our clinic.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary">location_on</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-text-main text-lg">Our Location</h3>
+                                <p class="text-text-muted">123 Dental Excellence Blvd,<br>Beverly Hills, CA 90210</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary">call</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-text-main text-lg">Phone Number</h3>
+                                <p class="text-text-muted">+1 (555) 123-4567</p>
+                                <p class="text-text-muted text-sm mt-1">Mon-Fri: 8am - 6pm</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="size-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary">mail</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-text-main text-lg">Email Address</h3>
+                                <p class="text-text-muted">hello@premiumdental.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="w-full h-64 bg-gray-200 rounded-2xl overflow-hidden shadow-inner relative">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10500.90799468987!2d2.2944813!3d48.8583701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sEiffel%20Tower!5e0!3m2!1sen!2sus!4v1647528994565!5m2!1sen!2sus"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100">
+                    <h2 class="font-serif text-3xl text-text-main mb-8">Send a Message</h2>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="first-name" class="text-sm font-semibold text-text-main">First Name</label>
+                                <input type="text" id="first-name"
+                                    class="w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary transition-all"
+                                    placeholder="John">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="last-name" class="text-sm font-semibold text-text-main">Last Name</label>
+                                <input type="text" id="last-name"
+                                    class="w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary transition-all"
+                                    placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label for="email" class="text-sm font-semibold text-text-main">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary transition-all"
+                                placeholder="john@example.com">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="subject" class="text-sm font-semibold text-text-main">Subject</label>
+                            <select id="subject"
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary transition-all">
+                                <option>General Inquiry</option>
+                                <option>Appointment Request</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label for="message" class="text-sm font-semibold text-text-main">Message</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 border-gray-200 focus:border-primary focus:ring-primary transition-all"
+                                placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-text-main text-white font-bold py-4 rounded-lg hover:bg-black transition-colors shadow-lg shadow-text-main/20">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-text-main text-white py-8 border-t border-white/10">
+        <div class="container mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-sm text-gray-400">
+                © 2024 Premium Dental. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Privacy</a>
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Terms</a>
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
