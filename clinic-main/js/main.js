@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // --- SEND EMAIL NOTIFICATION ---
                 // 1. Notify Admin (Missing ID yet)
-                // sendEmail('admin_booking', Object.fromEntries(formData)); 
+                sendEmail('admin_booking', Object.fromEntries(formData));
 
                 // 2. Thank Guest
                 sendEmail('guest_thank', {
