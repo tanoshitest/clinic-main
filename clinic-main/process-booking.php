@@ -111,8 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function sendTelegramMessage($text)
 {
     // --- CONFIGURATION ---
-    $apiToken = "YOUR_TELEGRAM_BOT_TOKEN"; // STEP 1: Paste Token Here
-    $chatId = "YOUR_TELEGRAM_CHAT_ID";     // STEP 2: Paste Chat ID Here
+    $apiToken = "8319802180:AAFiIHtJvWtV2hijtWDircMSljEy6VTgAag"; // STEP 1: Paste Token Here
+    $chatId = "1031749914";     // STEP 2: Paste Chat ID Here
     // ---------------------
 
     if ($apiToken === "YOUR_TELEGRAM_BOT_TOKEN" || $chatId === "YOUR_TELEGRAM_CHAT_ID") {
