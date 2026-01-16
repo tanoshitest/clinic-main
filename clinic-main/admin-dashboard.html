@@ -27,6 +27,10 @@
                 class="nav-item flex items-center gap-3 px-4 py-3 bg-white/10 rounded-lg text-white transition-colors">
                 <span class="material-symbols-outlined">calendar_today</span> Appointments
             </button>
+            <button onclick="switchTab('messages')"
+                class="nav-item flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white transition-colors">
+                <span class="material-symbols-outlined">mail</span> Messages
+            </button>
             <button onclick="switchTab('blogs')"
                 class="nav-item flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white transition-colors">
                 <span class="material-symbols-outlined">article</span> Blogs
@@ -69,6 +73,29 @@
                                 </tr>
                             </thead>
                             <tbody id="appointments-body" class="divide-y divide-gray-50">
+                                <!-- Data injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Messages Tab -->
+            <div id="tab-messages" class="tab-content hidden">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 border-b border-gray-100">
+                                <tr>
+                                    <th class="px-6 py-4 font-semibold text-gray-600">Sender</th>
+                                    <th class="px-6 py-4 font-semibold text-gray-600">Contact</th>
+                                    <th class="px-6 py-4 font-semibold text-gray-600">Subject</th>
+                                    <th class="px-6 py-4 font-semibold text-gray-600">Message</th>
+                                    <th class="px-6 py-4 font-semibold text-gray-600">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="messages-body" class="divide-y divide-gray-50">
                                 <!-- Data injected here -->
                             </tbody>
                         </table>

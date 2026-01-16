@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 2. Save to localStorage (Backup & Demo Dashboard)
                 const localData = {
                     id: Date.now(),
+                    type: 'appointment',
                     firstName: formData.get('first_name'),
                     lastName: formData.get('last_name'),
                     email: formData.get('email'),
@@ -142,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 2. Save to localStorage (Backup)
                 const localData = {
                     id: Date.now(),
+                    type: 'message',
                     firstName: formData.get('first_name'),
                     lastName: formData.get('last_name'),
                     email: formData.get('email'),
