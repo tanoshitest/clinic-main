@@ -3,16 +3,16 @@
 
 // 1. Database Configuration
 $host = 'localhost';
-$db   = 'clinic_db';
+$db = 'clinic_db';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
+    PDO::ATTR_EMULATE_PREPARES => false,
 ];
 
 header('Content-Type: application/json');
@@ -27,20 +27,26 @@ try {
 
 // 2. Handle Form Submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     // Get and Sanitize Inputs
     $firstName = trim($_POST['first_name'] ?? '');
-    $lastName  = trim($_POST['last_name'] ?? '');
-    $email     = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
-    $phone     = trim($_POST['phone'] ?? '');
-    $date      = $_POST['preferred_date'] ?? '';
-    $concern   = $_POST['concern'] ?? 'General Checkup';
+    $lastName = trim($_POST['last_name'] ?? '');
+    $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
+    $phone = trim($_POST['phone'] ?? '');
+    $date = $_POST['preferred_date'] ?? '';
+    $concern = $_POST['concern'] ?? 'General Checkup';
 
     // 3. Validation (Server-side)
     $errors = [];
-    if (empty($firstName)) { $errors[] = "First Name is required."; }
-    if (empty($phone)) { $errors[] = "Phone Number is required."; }
-    if (empty($date)) { $errors[] = "Preferred Date is required."; }
+    if (empty($firstName)) {
+        $errors[] = "First Name is required.";
+    }
+    if (empty($phone)) {
+        $errors[] = "Phone Number is required.";
+    }
+    if (empty($date)) {
+        $errors[] = "Preferred Date is required.";
+    }
 
     if (!empty($errors)) {
         echo json_encode(['success' => false, 'errors' => $errors]);
@@ -56,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 5. Send Email Notification
         $to = 'admin@mysite.com';
         $subject = "Khách đặt lịch mới: $firstName $lastName - $date";
-        $message = "
+        $messageContent = "
         <html>
         <head><title>New Appointment Request</title></head>
         <body>
@@ -78,7 +84,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= 'From: <system@mysite.com>' . "\r\n";
 
         // Attempt to send email (Note: requires mail server configuration)
-        @mail($to, $subject, $message, $headers);
+        @mail($to, $subject, $messageContent, $headers);
+
+        // 6. Send Telegram Notification
+        $telegramMessage = "📅 <b>ĐẶT LỊCH MỚI</b>\n" .
+            "--------------------------\n" .
+            "👤 <b>Khách:</b> $firstName $lastName\n" .
+            "📞 <b>SĐT:</b> $phone\n" .
+            "📧 <b>Email:</b> $email\n" .
+            "🗓 <b>Ngày hẹn:</b> $date\n" .
+            "📝 <b>Vấn đề:</b> $concern";
+
+        sendTelegramMessage($telegramMessage);
 
         echo json_encode(['success' => true, 'message' => 'Appointment scheduled successfully!']);
 
@@ -88,5 +105,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+}
+
+// Helper Function: Send Telegram Message
+function sendTelegramMessage($text)
+{
+    // --- CONFIGURATION ---
+    $apiToken = "YOUR_TELEGRAM_BOT_TOKEN"; // STEP 1: Paste Token Here
+    $chatId = "YOUR_TELEGRAM_CHAT_ID";     // STEP 2: Paste Chat ID Here
+    // ---------------------
+
+    if ($apiToken === "YOUR_TELEGRAM_BOT_TOKEN" || $chatId === "YOUR_TELEGRAM_CHAT_ID") {
+        return; // Skip if not configured
+    }
+
+    $url = "https://api.telegram.org/bot$apiToken/sendMessage?chat_id=$chatId&text=" . urlencode($text) . "&parse_mode=HTML";
+
+    // Use file_get_contents to send the request (suppress errors with @)
+    @file_get_contents($url);
 }
 ?>
