@@ -9,31 +9,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingForm = document.getElementById('booking-form');
 
     if (bookingForm) {
+        console.log('Booking form found, attaching listener');
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            console.log('Form submitted');
 
-            // Collect form data
-            const formData = {
-                id: Date.now(), // Simple unique ID
-                firstName: document.getElementById('first-name').value,
-                lastName: document.getElementById('last-name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                date: document.getElementById('appointment-date').value,
-                concern: document.getElementById('concern').value,
-                submittedAt: new Date().toISOString()
-            };
+            try {
+                // Collect form data
+                const formData = {
+                    id: Date.now(), // Simple unique ID
+                    firstName: document.getElementById('first-name').value,
+                    lastName: document.getElementById('last-name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    date: document.getElementById('appointment-date').value,
+                    concern: document.getElementById('concern').value,
+                    submittedAt: new Date().toISOString()
+                };
 
-            // Save to localStorage
-            const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-            appointments.unshift(formData); // Add new appointment to the top
-            localStorage.setItem('appointments', JSON.stringify(appointments));
+                // Save to localStorage
+                const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                appointments.unshift(formData); // Add new appointment to the top
+                localStorage.setItem('appointments', JSON.stringify(appointments));
 
-            // Show success feedback
-            alert(`Thank you, ${formData.firstName}! We have received your appointment request for ${formData.date}. Our team will contact you shortly.`);
+                // Show success feedback
+                alert(`Thank you, ${formData.firstName}! We have received your appointment request for ${formData.date}. Our team will contact you shortly.`);
 
-            bookingForm.reset();
+                bookingForm.reset();
+            } catch (error) {
+                console.error('Error processing form:', error);
+                alert('There was an error submitting the form. Please check the console.');
+            }
         });
+    } else {
+        console.error('Booking form not found!');
     }
 
     // 2. Load Dynamic Contact Info (if set in Admin)
