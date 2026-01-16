@@ -418,6 +418,11 @@
             document.getElementById('setting-email').value = savedSettings.email || '';
             document.getElementById('setting-address').value = savedSettings.address || '';
         }
+        // Initialize Dashboard
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAppointments();
+            // Optional: If we wanted to persist the last active tab, we could check localStorage here
+        });
     </script>
 </body>
 
