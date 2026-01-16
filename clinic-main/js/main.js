@@ -70,6 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 appointments.unshift(localData);
                 localStorage.setItem('appointments', JSON.stringify(appointments));
 
+                // --- SEND TELEGRAM NOTIFICATION ---
+                const telegramMsg = `📅 <b>ĐẶT LỊCH MỚI</b>\n` +
+                    `--------------------------\n` +
+                    `👤 <b>Khách:</b> ${formData.get('first_name')} ${formData.get('last_name')}\n` +
+                    `📞 <b>SĐT:</b> ${formData.get('phone')}\n` +
+                    `📧 <b>Email:</b> ${formData.get('email')}\n` +
+                    `🗓 <b>Ngày hẹn:</b> ${formData.get('preferred_date')}\n` +
+                    `📝 <b>Vấn đề:</b> ${formData.get('concern')}`;
+
+                // Do not await strictly to avoid delaying UI feedback too much, but good for demo
+                sendTelegramNotification(telegramMsg);
+                // ----------------------------------
+
 
                 // 3. Show Feedback
                 if (emailSent) {
@@ -158,6 +171,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 appointments.unshift(localData);
                 localStorage.setItem('appointments', JSON.stringify(appointments));
 
+                // --- SEND TELEGRAM NOTIFICATION ---
+                const telegramMsg = `📩 <b>TIN NHẮN MỚI</b>\n` +
+                    `--------------------------\n` +
+                    `👤 <b>Khách:</b> ${formData.get('first_name')} ${formData.get('last_name')}\n` +
+                    `📧 <b>Email:</b> ${formData.get('email')}\n` +
+                    `📝 <b>Chủ đề:</b> ${formData.get('concern')}\n` +
+                    `💬 <b>Nội dung:</b> ${formData.get('message')}`;
+
+                sendTelegramNotification(telegramMsg);
+                // ----------------------------------
+
 
                 // 3. Show Feedback
                 if (emailSent) {
@@ -204,3 +228,35 @@ document.addEventListener('DOMContentLoaded', () => {
         // For this demo, let's look for specific placeholders if we can, or just rely on the Admin structure.
     }
 });
+
+/**
+ * Sends a notification to Telegram Channel/Group
+ * NOTE: In a real production app, you should not expose the Bot Token in client-side code.
+ * Consider using a Serverless Function (Vercel Functions) or a backend proxy.
+ */
+async function sendTelegramNotification(message) {
+    const botToken = '8319802180:AAFiIHtJvWtV2hijtWDircMSljEy6VTgAag';
+    const chatId = '1031749914';
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+                parse_mode: 'HTML'
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Telegram API Error: ${response.statusText}`);
+        }
+        console.log('Telegram notification sent successfully');
+    } catch (error) {
+        console.error('Failed to send Telegram notification:', error);
+    }
+}
