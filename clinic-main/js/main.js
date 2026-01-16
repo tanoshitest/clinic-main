@@ -10,35 +10,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (bookingForm) {
         console.log('Booking form found, attaching listener');
-        bookingForm.addEventListener('submit', (e) => {
+        bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             console.log('Form submitted');
 
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
             try {
                 // Collect form data
-                const formData = {
-                    id: Date.now(), // Simple unique ID
-                    firstName: document.getElementById('first-name').value,
-                    lastName: document.getElementById('last-name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    date: document.getElementById('appointment-date').value,
-                    concern: document.getElementById('concern').value,
+                const formData = new FormData();
+                formData.append('first_name', document.getElementById('first-name').value);
+                formData.append('last_name', document.getElementById('last-name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('phone', document.getElementById('phone').value);
+                formData.append('preferred_date', document.getElementById('appointment-date').value);
+                formData.append('concern', document.getElementById('concern').value);
+
+                // 1. Send to PHP Backend (for Email)
+                let emailSent = false;
+                try {
+                    const response = await fetch('process-booking.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result.success) {
+                            emailSent = true;
+                            console.log('Backend response:', result.message);
+                        } else {
+                            console.error('Backend error:', result.message);
+                        }
+                    } else {
+                        console.warn('Backend unavailable (likely running locally without PHP)');
+                    }
+                } catch (networkError) {
+                    console.warn('Network error or no backend server:', networkError);
+                }
+
+                // 2. Save to localStorage (Backup & Demo Dashboard)
+                const localData = {
+                    id: Date.now(),
+                    firstName: formData.get('first_name'),
+                    lastName: formData.get('last_name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    date: formData.get('preferred_date'),
+                    concern: formData.get('concern'),
                     submittedAt: new Date().toISOString()
                 };
 
-                // Save to localStorage
                 const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
-                appointments.unshift(formData); // Add new appointment to the top
+                appointments.unshift(localData);
                 localStorage.setItem('appointments', JSON.stringify(appointments));
 
-                // Show success feedback
-                alert(`Thank you, ${formData.firstName}! We have received your appointment request for ${formData.date}. Our team will contact you shortly.`);
+
+                // 3. Show Feedback
+                if (emailSent) {
+                    alert('Success! Your appointment has been scheduled and an email confirmation sent.');
+                } else {
+                    alert('Success! Your appointment request has been saved locally. (Backend email server not reachable in this demo environment)');
+                }
 
                 bookingForm.reset();
+
             } catch (error) {
                 console.error('Error processing form:', error);
-                alert('There was an error submitting the form. Please check the console.');
+                alert('An unexpected error occurred. Please check console.');
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
             }
         });
     } else {
