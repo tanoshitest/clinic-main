@@ -91,7 +91,92 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Booking form not found!');
     }
 
-    // 2. Load Dynamic Contact Info (if set in Admin)
+    // 3. Handle Contact Page Form Submission
+    const contactForm = document.getElementById('contact-form');
+
+    if (contactForm) {
+        console.log('Contact form found, attaching listener');
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log('Contact form submitted');
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                // Collect form data
+                const formData = new FormData();
+                formData.append('first_name', document.getElementById('first-name').value);
+                formData.append('last_name', document.getElementById('last-name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('concern', document.getElementById('subject').value); // Map Subject to Concern
+                formData.append('message', document.getElementById('message').value); // New field for message
+                // Add defaults for missing fields needed by PHP
+                formData.append('phone', 'N/A');
+                formData.append('preferred_date', new Date().toISOString().split('T')[0]); // Today's date as default
+
+                // 1. Send to PHP Backend (for Email)
+                let emailSent = false;
+                try {
+                    const response = await fetch('process-booking.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result.success) {
+                            emailSent = true;
+                            console.log('Backend response:', result.message);
+                        } else {
+                            console.error('Backend error:', result.message);
+                        }
+                    } else {
+                        console.warn('Backend unavailable');
+                    }
+                } catch (networkError) {
+                    console.warn('Network error:', networkError);
+                }
+
+                // 2. Save to localStorage (Backup)
+                const localData = {
+                    id: Date.now(),
+                    firstName: formData.get('first_name'),
+                    lastName: formData.get('last_name'),
+                    email: formData.get('email'),
+                    phone: 'N/A',
+                    date: 'N/A',
+                    concern: formData.get('concern'),
+                    message: formData.get('message'),
+                    submittedAt: new Date().toISOString()
+                };
+
+                const appointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+                appointments.unshift(localData);
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+
+
+                // 3. Show Feedback
+                if (emailSent) {
+                    alert('Message sent! We will get back to you shortly.');
+                } else {
+                    alert('Message saved! We will get back to you shortly. (Backend email server not reachable)');
+                }
+
+                contactForm.reset();
+
+            } catch (error) {
+                console.error('Error processing contact form:', error);
+                alert('An error occurred. Please try again.');
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // LOAD DYNAMIC INFO FROM LOCALSTORAGE...
     const savedContactInfo = JSON.parse(localStorage.getItem('clinic_contact_info'));
 
     if (savedContactInfo) {
