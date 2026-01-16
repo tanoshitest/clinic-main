@@ -132,12 +132,24 @@ function sendTelegramMessage($text)
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Fix for local SSL issues
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // Relaxed SSL for debug
+
         $result = curl_exec($ch);
+        $error = curl_error($ch);
         curl_close($ch);
+
+        // LOGGING
+        $logEntry = date('Y-m-d H:i:s') . " - CURL Result: " . ($result ? $result : "FAILED") . " Error: " . ($error ? $error : "None") . "\n";
+        file_put_contents('telegram_debug.txt', $logEntry, FILE_APPEND);
+
     } else {
-        // Fallback for hosting without CURL
-        @file_get_contents($url . "?" . http_build_query($data));
+        // Fallback
+        $result = @file_get_contents($url . "?" . http_build_query($data));
+
+        // LOGGING
+        $logEntry = date('Y-m-d H:i:s') . " - FGC Result: " . ($result ? $result : "FAILED") . "\n";
+        file_put_contents('telegram_debug.txt', $logEntry, FILE_APPEND);
     }
 }
 ?>
