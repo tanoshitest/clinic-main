@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Our Services - Premium Dental Clinic</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11c4d4",
+                        "primary-dark": "#0e9aa7",
+                        "background-light": "#ffffff",
+                        "background-alt": "#F9FAFB",
+                        "background-dark": "#102022",
+                        "text-main": "#111718",
+                        "text-muted": "#618689",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary/30">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/20 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-lg">
+                            <span class="material-symbols-outlined text-[24px]">dentistry</span>
+                        </div>
+                        <span class="text-text-main text-xl font-bold tracking-tight">Premium<span
+                                class="text-primary">Dental</span></span>
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-semibold text-primary transition-colors" href="services.html">Services</a>
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="index.html#contact">Contact</a>
+                </div>
+                <!-- CTA -->
+                <div class="hidden md:block">
+                    <button
+                        class="bg-text-main hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                        Book Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="py-32 bg-background-alt text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="font-serif text-5xl md:text-6xl text-text-main mb-6">Our Services</h1>
+            <p class="text-lg text-text-muted max-w-2xl mx-auto">Discover our comprehensive range of world-class dental
+                treatments tailored to your needs.</p>
+        </div>
+    </header>
+
+    <!-- Services Grid -->
+    <section class="py-24 bg-white dark:bg-background-dark">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="h-64 overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTMsbcvymd_55H0mjAZgUINVkyUiAxC8G9LhwSCpr0WYl0IdxSI2fJHFfb38Bci0Q1xAbEKLwGLGHzTUCyicsB0g0CFUbgsmRAItJ9mcKN5VhnrspXi1ufqdlPTqw172K6jG0xGV7FwvbirlzVdOGej9vevvlkO2_cMfIQDhYES_u32LAzPbQVfX-x41tCk7gq6M72TMv3AzDhKbP4N8maiM4zrc9SwU7YTHGOmk0te8_4wlPm94XF5Q5wo1mI_5IyIlfgCDFXGbtG');">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-text-main mb-2">Cosmetic Veneers</h3>
+                        <p class="text-text-muted mb-6">Custom porcelain shells designed to enhance your smile's
+                            aesthetics.</p>
+                        <a href="service-detail.html"
+                            class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn
+                            More</a>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="h-64 overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAxbXYB6xiZDFAnsuHIoU7m4e4_sZei1DRXFEse_BsbgH-lCVzt_vPgKw3LxvJK6t7vrXx5z99NlkRNE1Kp0bevxsXiXsBmj_oJZAv__3yA4eYmvB4Rak-_35RH54TdlkMFeH__qZQQKkUH_-tNi_qGxQMrt9SNxeaQSbj8pZJmyIqAvGqyFvGjYd3maDUxNPkMyn880qAqlpM1DVxA1ZyHAGeYPYWqQYYtk89yHtqEu9Tg_eM91FjgjZRc_HSmkB0sd3oSMg4894Up');">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-text-main mb-2">Invisalign</h3>
+                        <p class="text-text-muted mb-6">Discreet clear aligner therapy to straighten teeth.</p>
+                        <a href="service-detail.html"
+                            class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn
+                            More</a>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="h-64 overflow-hidden">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZW1pnvgqhNvYnFD1s629hPB_ty25180sBW00H6kVtkyAymlUDfeULLCtmBLrM1icLPg9fEHrPYvRJtoJdZk0zn2a-qdnnpYBvjeBzNeHXnA-FouzxpU8hsxnLpTHJ-et4QXj7DZXX8Mf1PAU2jtkP_MPN1AmRguO6DJFy17YDbG97kb7HeSm-6yxpk3DKEPEjGs4BpG7_Xg9oDXc_xYOn-oSadvikSXH3VNEOY6cMp09Duu8eBs7yDlL3lxFhEIxavO4D9ErFgUBM');">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-text-main mb-2">Implant Dentistry</h3>
+                        <p class="text-text-muted mb-6">Permanent replacement solutions for restoring full function.</p>
+                        <a href="service-detail.html"
+                            class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn
+                            More</a>
+                    </div>
+                </div>
+                <!-- Service 4 (Placeholder) -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">dentistry</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-text-main mb-2">Teeth Whitening</h3>
+                        <p class="text-text-muted mb-6">Professional whitening for a brighter, more confident smile.</p>
+                        <a href="service-detail.html"
+                            class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn
+                            More</a>
+                    </div>
+                </div>
+                <!-- Service 5 (Placeholder) -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">medical_services</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-text-main mb-2">General Checkups</h3>
+                        <p class="text-text-muted mb-6">Routine cleaning and examinations for optimal oral health.</p>
+                        <a href="service-detail.html"
+                            class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn
+                            More</a>
+                    </div>
+                </div>
+                <!-- Service 6 (Placeholder) -->
+                <div
+                    class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">child_care</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-text-main mb-2">Pediatric Dentistry</h3>
+                        <p class="text-text-muted mb-6">Gentle care specifically designed for children and teens.</p>
+                        <a href="service-detail.html"
+                            class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn
+                            More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-main text-white py-8 border-t border-white/10">
+        <div class="container mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-sm text-gray-400">
+                © 2024 Premium Dental. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Privacy</a>
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Terms</a>
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
