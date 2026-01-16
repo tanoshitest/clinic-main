@@ -86,11 +86,13 @@
     </nav>
 
     <!-- Header -->
-    <header class="py-32 bg-background-alt text-center">
-        <div class="container mx-auto px-6">
-            <h1 class="font-serif text-5xl md:text-6xl text-text-main mb-6">Latest News & Insights</h1>
-            <p class="text-lg text-text-muted max-w-2xl mx-auto">Expert advice, dental tips, and clinic updates from
-                our team of specialists.</p>
+    <header class="pt-32 pb-20 bg-background-alt">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="font-serif text-5xl md:text-6xl text-text-main mb-6">Latest News & Insights</h1>
+                <p class="text-lg text-text-muted">Stay updated with the latest trends in dentistry, oral health tips,
+                    and clinic announcements.</p>
+            </div>
         </div>
     </header>
 
@@ -131,7 +133,9 @@
             <!-- Recent Posts Grid -->
             <h3 class="font-serif text-2xl text-text-main mb-12">Recent Articles</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Post 1 -->
+                <!-- Posts will be injected here by JS -->
+
+                <!-- Static Fallback Posts -->
                 <div class="group">
                     <div class="rounded-2xl overflow-hidden h-64 mb-6 relative">
                         <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
@@ -203,6 +207,39 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+            const grid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
+
+            if (grid && blogs.length > 0) {
+                blogs.forEach(blog => {
+                    const articleHTML = `
+                    <div class="group">
+                        <div class="rounded-2xl overflow-hidden h-64 mb-6 relative">
+                             <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                style="background-image: url('${blog.image}');">
+                            </div>
+                        </div>
+                        <div class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                            ${blog.category}
+                        </div>
+                        <h3 class="font-serif text-2xl text-text-main mb-3 group-hover:text-primary transition-colors">
+                            ${blog.title}
+                        </h3>
+                         <p class="text-text-muted text-sm mb-4 line-clamp-3">
+                            ${blog.content}
+                        </p>
+                        <a href="blog-detail.html?id=${blog.id}" class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors inline-block">Read More</a>
+                    </div>
+                    `;
+                    grid.insertAdjacentHTML('afterbegin', articleHTML);
+                });
+            }
+        });
+    </script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
