@@ -46,6 +46,15 @@
         }
     </style>
 </head>
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <body
     class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary/30">
@@ -140,6 +149,28 @@
                         </li>
                     </ul>
 
+                    <!-- 3D Braces Structure Section -->
+                    <section id="braces-3d-section"
+                        class="relative w-full h-[200vh] my-16 bg-gray-50 rounded-2xl overflow-visible">
+                        <div class="sticky top-20 w-full h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden"
+                            id="canvas-container">
+                            <!-- Annotations (Will be positioned by JS) -->
+                            <div id="annotation-bracket"
+                                class="absolute hidden bg-white/10 backdrop-blur-md border border-white/20 text-text-main rounded-xl p-4 shadow-xl z-10 max-w-[200px]">
+                                <h4 class="font-bold text-sm">Ceramic Bracket</h4>
+                                <p class="text-xs mt-1">Translucent material that blends with natural tooth color.</p>
+                            </div>
+                            <div id="annotation-wire"
+                                class="absolute hidden bg-white/10 backdrop-blur-md border border-white/20 text-text-main rounded-xl p-4 shadow-xl z-10 max-w-[200px]">
+                                <h4 class="font-bold text-sm">Archwire</h4>
+                                <p class="text-xs mt-1">Shape-memory alloy that gently guides teeth into position.</p>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 w-full text-center pb-8 opacity-50 text-sm">
+                            Scroll to explore component structure
+                        </div>
+                    </section>
+
                     <h3 class="font-serif text-2xl text-text-main mb-8">Process Timeline</h3>
                     <div class="space-y-8 relative pl-8 border-l-2 border-primary/20">
                         <div class="relative">
@@ -216,6 +247,7 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="./js/braces-3d.js"></script>
 </body>
 
 </html>
