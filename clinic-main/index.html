@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premium Dental Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11c4d4",
+                        "primary-dark": "#0e9aa7",
+                        "background-light": "#ffffff",
+                        "background-alt": "#F9FAFB",
+                        "background-dark": "#102022",
+                        "text-main": "#111718",
+                        "text-muted": "#618689",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Glassmorphism utility */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        /* Cinematic Fade In Animation Utilities */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Before/After Slider Simulation */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .comparison-slider .after-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%; /* Initial split */
+            background-size: cover;
+            background-position: center;
+            border-right: 2px solid #ffffff;
+            z-index: 2;
+        }
+        .comparison-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            cursor: ew-resize;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary/30">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/20 glass-nav transition-all duration-300">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-[24px]">dentistry</span>
+</div>
+<span class="text-text-main text-xl font-bold tracking-tight">Premium<span class="text-primary">Dental</span></span>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors" href="#services">Services</a>
+<a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors" href="#about">About</a>
+<a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors" href="#results">Results</a>
+<a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors" href="#contact">Contact</a>
+</div>
+<!-- CTA -->
+<div class="hidden md:block">
+<button class="bg-text-main hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                        Book Appointment
+                    </button>
+</div>
+<!-- Mobile Menu Button -->
+<div class="md:hidden">
+<button class="text-text-main p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of a confident woman smiling with perfect white teeth in natural lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCGW5-V6HDPFS3ebTIkyqC01WeYHRd4DE55iqfMPGM7P6CwqwjjHRXu7xDNJkZr9ChsFkmcjOQeSpPBoeY73lYo7FUEU8nUZ984ycF2KeK9hABMZRvxu7djGPKRJgXq_NJ8So1KDaWP9z-ivHm2wyaYSCPz9ZFqF7Qhw6BWokYolgcmwTzxYOQ1MuFVL-Ro7zpwvv8m-mvt-Wciune9oVm7WTO0Ci6f9hoHsBUkwTuHsadoslqcogMgtpOGkGF4ICizN5umqLK4MHxU');">
+</div>
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent dark:from-background-dark/90 dark:via-background-dark/50"></div>
+</div>
+<div class="relative z-10 container mx-auto px-6 lg:px-8 flex flex-col justify-center h-full pb-20">
+<div class="max-w-2xl animate-fade-in-up">
+<div class="flex items-center gap-2 mb-6 text-primary font-bold tracking-wider uppercase text-xs">
+<span class="w-8 h-[2px] bg-primary"></span>
+<span>World Class Dentistry</span>
+</div>
+<h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-text-main leading-[1.1] mb-6">
+                    Redefining <br/>
+<span class="italic text-text-muted">Your Smile.</span>
+</h1>
+<p class="text-lg md:text-xl text-text-main/70 mb-10 max-w-lg leading-relaxed delay-100 animate-fade-in-up opacity-0" style="animation-fill-mode: forwards;">
+                    Experience cosmetic dentistry tailored to your unique facial structure in a sanctuary of comfort and precision.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 delay-200 animate-fade-in-up opacity-0" style="animation-fill-mode: forwards;">
+<button class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full text-base font-bold transition-all shadow-xl shadow-primary/30 flex items-center justify-center gap-2">
+                        Book Consultation
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="bg-white/50 hover:bg-white text-text-main border border-white px-8 py-4 rounded-full text-base font-bold transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-primary">play_circle</span>
+                        Our Process
+                    </button>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-text-main/50">
+<span class="material-symbols-outlined">keyboard_arrow_down</span>
+</div>
+</header>
+<!-- Services Section -->
+<section class="py-24 bg-background-alt dark:bg-background-dark/50" id="services">
+<div class="container mx-auto px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-xl">
+<h2 class="font-serif text-4xl md:text-5xl text-text-main mb-4">Our Expertise</h2>
+<p class="text-text-muted text-lg">Comprehensive dental solutions blending art and science.</p>
+</div>
+<button class="text-primary font-bold hover:text-primary-dark flex items-center gap-1 group">
+                    View All Services 
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Service Card 1 -->
+<div class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="h-64 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Close up of cosmetic veneers being prepared in a clean clinical setting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTMsbcvymd_55H0mjAZgUINVkyUiAxC8G9LhwSCpr0WYl0IdxSI2fJHFfb38Bci0Q1xAbEKLwGLGHzTUCyicsB0g0CFUbgsmRAItJ9mcKN5VhnrspXi1ufqdlPTqw172K6jG0xGV7FwvbirlzVdOGej9vevvlkO2_cMfIQDhYES_u32LAzPbQVfX-x41tCk7gq6M72TMv3AzDhKbP4N8maiM4zrc9SwU7YTHGOmk0te8_4wlPm94XF5Q5wo1mI_5IyIlfgCDFXGbtG');">
+</div>
+</div>
+<div class="p-8">
+<div class="mb-4 bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<h3 class="text-2xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors">Cosmetic Veneers</h3>
+<p class="text-text-muted mb-6">Custom porcelain shells designed to enhance your smile's aesthetics with minimal invasion.</p>
+<span class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn More</span>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="h-64 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Clear aligners set on a reflective surface" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAxbXYB6xiZDFAnsuHIoU7m4e4_sZei1DRXFEse_BsbgH-lCVzt_vPgKw3LxvJK6t7vrXx5z99NlkRNE1Kp0bevxsXiXsBmj_oJZAv__3yA4eYmvB4Rak-_35RH54TdlkMFeH__qZQQKkUH_-tNi_qGxQMrt9SNxeaQSbj8pZJmyIqAvGqyFvGjYd3maDUxNPkMyn880qAqlpM1DVxA1ZyHAGeYPYWqQYYtk89yHtqEu9Tg_eM91FjgjZRc_HSmkB0sd3oSMg4894Up');">
+</div>
+</div>
+<div class="p-8">
+<div class="mb-4 bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">all_inclusive</span>
+</div>
+<h3 class="text-2xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors">Invisalign &amp; Alignment</h3>
+<p class="text-text-muted mb-6">Discreet clear aligner therapy to straighten teeth without the look of traditional metal braces.</p>
+<span class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn More</span>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="h-64 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Dental implant model showing structure and precision" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZW1pnvgqhNvYnFD1s629hPB_ty25180sBW00H6kVtkyAymlUDfeULLCtmBLrM1icLPg9fEHrPYvRJtoJdZk0zn2a-qdnnpYBvjeBzNeHXnA-FouzxpU8hsxnLpTHJ-et4QXj7DZXX8Mf1PAU2jtkP_MPN1AmRguO6DJFy17YDbG97kb7HeSm-6yxpk3DKEPEjGs4BpG7_Xg9oDXc_xYOn-oSadvikSXH3VNEOY6cMp09Duu8eBs7yDlL3lxFhEIxavO4D9ErFgUBM');">
+</div>
+</div>
+<div class="p-8">
+<div class="mb-4 bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<h3 class="text-2xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors">Full Mouth Implants</h3>
+<p class="text-text-muted mb-6">Permanent, natural-looking replacement solutions for restoring full function and confidence.</p>
+<span class="text-sm font-bold text-text-main border-b-2 border-primary/20 pb-1 group-hover:border-primary transition-colors">Learn More</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 bg-white dark:bg-background-dark overflow-hidden" id="about">
+<div class="container mx-auto px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<!-- Image Grid -->
+<div class="w-full lg:w-1/2 relative">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-12">
+<div class="aspect-[3/4] rounded-2xl bg-gray-100 overflow-hidden">
+<img alt="Portrait of a male dentist smiling professionally" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" data-alt="Portrait of a male dentist smiling professionally" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGEa1yjrHT3gUZkze8wetW38YT0bp__LVZZciJD-AG_wAlTFw1NuTNyr30HgIo6rz-NUYGuV-auJufJnMtq400QvmrKrrsEuja4F-raR6vua_aglrTeUdiBH3FN6cGaagSbH7SsB-qNhQ6Bi9WMl72kOezNSk3tiA7e4UIQw2hHlHgHJ_qtayennKN2eOu5ibBxxdhJHLuD99hH-jxdQ9VIRgK3MprtxzcoNoi_MEXYhYAlCVJTTcIKD7fqfa_wJ6vt0SgB6nCg-YD"/>
+</div>
+<div class="bg-primary/5 p-6 rounded-2xl">
+<h4 class="text-4xl font-serif text-primary font-bold mb-1">15+</h4>
+<p class="text-text-main font-medium">Years Experience</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-background-alt p-6 rounded-2xl text-center flex flex-col items-center justify-center border border-gray-100">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">verified</span>
+<p class="text-text-main font-bold">Board Certified</p>
+</div>
+<div class="aspect-[3/4] rounded-2xl bg-gray-100 overflow-hidden">
+<img alt="Female dentist examining a patient with care" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" data-alt="Female dentist examining a patient with care" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0KZfENicp4FgNQZ-L11HDTmxuSkQITKhgYfvtBeTT01ZmvY8djAa4CTKSONH74NPeoqI0msBVhcPZmXBajXK8y8vjHj-DLH6gdlFKccjrj8j0wUI-rmYD80wfr0jO_ZRVZ7R-R4HyfjSn74Ov1Fdh80mHAlivFO7RLdVgTGIWh10t78QxDZ_jQevHU0Z5crX8p59rvaPFuiA6cz32j4lb0DiK6Bt6CeYvWS7vb2FbdWtYiTAOlpFRhy-4dPMtImWGVdP_IdOY13TN"/>
+</div>
+</div>
+</div>
+<!-- Decorative element behind -->
+<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl"></div>
+</div>
+<!-- Content -->
+<div class="w-full lg:w-1/2">
+<span class="inline-block py-1 px-3 rounded-full bg-background-alt text-primary text-sm font-bold mb-6 tracking-wide uppercase border border-primary/10">Who We Are</span>
+<h2 class="font-serif text-4xl md:text-5xl text-text-main mb-6 leading-tight">A Legacy of <br/>Medical Excellence</h2>
+<p class="text-text-muted text-lg mb-6 leading-relaxed">
+                        Founded on the principles of integrity and innovation, Premium Dental has been redefining smiles for over a decade. Our team of specialists combines artistic vision with clinical precision.
+                    </p>
+<p class="text-text-muted text-lg mb-8 leading-relaxed">
+                        We believe that a visit to the dentist should feel like a retreat. From our noise-canceling headphones to our weighted blankets, every detail is curated for your comfort.
+                    </p>
+<div class="flex items-center gap-8 mb-8 border-t border-gray-100 pt-8">
+<div>
+<p class="text-3xl font-bold text-text-main mb-1">5k+</p>
+<p class="text-sm text-text-muted uppercase tracking-wider">Smiles Crafted</p>
+</div>
+<div class="w-px h-12 bg-gray-200"></div>
+<div>
+<p class="text-3xl font-bold text-text-main mb-1">100%</p>
+<p class="text-sm text-text-muted uppercase tracking-wider">Satisfaction</p>
+</div>
+</div>
+<a class="text-text-main font-bold border-b-2 border-primary hover:text-primary transition-colors inline-flex items-center gap-2 pb-1" href="#">
+                        Meet Our Doctors
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials & Results Section -->
+<section class="py-24 bg-background-alt dark:bg-background-dark/50" id="results">
+<div class="container mx-auto px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-serif text-4xl md:text-5xl text-text-main mb-4">Real Results</h2>
+<p class="text-text-muted text-lg">See the transformative power of our procedures.</p>
+</div>
+<!-- Comparison Slider Block -->
+<div class="flex flex-col lg:flex-row gap-12 items-center">
+<!-- Slider (Visual Only Simulation) -->
+<div class="w-full lg:w-3/5 h-[500px] rounded-2xl overflow-hidden shadow-2xl relative group cursor-ew-resize">
+                            <div class="comparison-slider" id="comparison-slider">
+                                <!-- After Image (Background of container) -->
+                                <div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Close up of a perfect bright white smile (After result)" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqNCiIyfGQdDz6R2vK29CGXUKOutz2d04EwtiDm6PGnvhShh37IGvuLlP8J-gq2BBgj_k7NNqLeSYgZLmQaIMUS4T4IxLdCDIC1B9vB9EqTMrprt5ZFVZLI2iH40pu9fXm0cJbmuLJkStErfYy6Jw2sUqnbGtYklHX1_dDDr2zy5Z7umRnuTUgay1Go8a4Qs5MWXFCT4K1eFrzZbRZ-k_MNXj03G0AFPa71alygaLKxsq4xmPFLtBersfA4g42kQAJ4huH8FutoMnG');">
+                                    <div class="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-1 rounded text-sm font-medium backdrop-blur-md">AFTER</div>
+                                </div>
+                                <!-- Before Image (Clipped Div) -->
+                                <div id="slider-overlay" class="after-image bg-cover bg-center" data-alt="Close up of a smile with slightly misaligned teeth (Before result)" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBh86orrUQRfPwuqAzUr9gK2TXccbRR56sAyn5xuzlASizWxKOCQ94r0IlZ4DQigGoprHeFm536bg3AexAh0wiBj7k2wRSKa1y020ui1lLAhylVc4y0uuCEulNheo-cKnvp8sbwtzwWyoNuOenGcjjYLQUxtZkgo6pbkHuqNkTNV6JTbNRBhKSsT4ImadTqvvj1jRKm7S2hJ2SUrhxPB1RqXPgVwFjflC_9ZBg2d5T1qqxygPfqtkAyJlXa9I_RfVKza8DvHDdLchvt'); width: 50%; border-right: 4px solid #fff;">
+                                    <div class="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-sm font-medium backdrop-blur-md">BEFORE</div>
+                                </div>
+                                <!-- Handle -->
+                                <div id="slider-handle" class="absolute inset-y-0 left-1/2 w-1 -ml-0.5 bg-white z-20 flex items-center justify-center cursor-ew-resize">
+                                    <div class="size-10 bg-white rounded-full shadow-lg flex items-center justify-center text-primary pointer-events-none">
+                                        <span class="material-symbols-outlined text-xl">unfold_more_double</span> <!-- Rotated via CSS if needed, using icon as visual grip -->
+                                    </div>
+                                </div>
+                            </div>
+</div>
+<!-- Testimonial Quote -->
+<div class="w-full lg:w-2/5">
+<span class="material-symbols-outlined text-6xl text-primary/20 mb-6">format_quote</span>
+<blockquote class="font-serif text-3xl md:text-4xl text-text-main leading-snug mb-8">
+                        "The level of care was unlike anything I've experienced. I finally have the smile I've always dreamed of."
+                    </blockquote>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-gray-300 bg-cover bg-center" data-alt="Portrait of Sarah Jenkins, a happy patient" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2Yhrxnb5tYx_ihvG7-dE5s5nkaMzUkVHyNGho7R2n72mKlOZ-vxnqucKPNM4uGI-VhB8ndEeqnGYtFKxI-jyq-UXQVQoFOvhX-QhA7YvD3lYnKwm1kuPJLENbSp6oUrISfFCkhcgh2sh7Pj_SgwupLgeXnWFhrqLiN2G0bQnjNAV6kJm3S1FL5GD4_sg8J1A8JcH5RmY4XXgKVTeDYwdsLWkvp_0bzKSk0oRTprNIOHdxfhs9tL-ry2ubx-LmzfBk1637xIiMs1_X');">
+</div>
+<div>
+<p class="font-bold text-text-main">Sarah Jenkins</p>
+<p class="text-sm text-text-muted">Invisalign Patient</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="bg-white dark:bg-background-dark" id="contact">
+<div class="flex flex-col lg:flex-row min-h-screen">
+<!-- Form Side -->
+<div class="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center">
+<div class="max-w-md mx-auto w-full">
+<h2 class="font-serif text-4xl text-text-main mb-2">Book Your Visit</h2>
+<p class="text-text-muted mb-10">We'll get back to you within 24 hours.</p>
+<form class="space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-text-main" for="first-name">First Name</label>
+<input class="w-full bg-background-alt border-0 border-b-2 border-gray-200 focus:border-primary focus:ring-0 px-0 py-3 transition-colors bg-transparent placeholder-gray-400" id="first-name" placeholder="Jane" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-text-main" for="last-name">Last Name</label>
+<input class="w-full bg-background-alt border-0 border-b-2 border-gray-200 focus:border-primary focus:ring-0 px-0 py-3 transition-colors bg-transparent placeholder-gray-400" id="last-name" placeholder="Doe" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-text-main" for="email">Email Address</label>
+<input class="w-full bg-background-alt border-0 border-b-2 border-gray-200 focus:border-primary focus:ring-0 px-0 py-3 transition-colors bg-transparent placeholder-gray-400" id="email" placeholder="jane@example.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-text-main" for="phone">Phone Number</label>
+<input class="w-full bg-background-alt border-0 border-b-2 border-gray-200 focus:border-primary focus:ring-0 px-0 py-3 transition-colors bg-transparent placeholder-gray-400" id="phone" placeholder="(555) 123-4567" type="tel"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-text-main" for="concern">Primary Concern</label>
+<select class="w-full bg-background-alt border-0 border-b-2 border-gray-200 focus:border-primary focus:ring-0 px-0 py-3 transition-colors bg-transparent text-gray-500" id="concern">
+<option>General Checkup</option>
+<option>Cosmetic Consultation</option>
+<option>Implants</option>
+<option>Emergency</option>
+</select>
+</div>
+<button class="w-full bg-text-main text-white font-bold py-4 rounded-lg mt-8 hover:bg-black transition-colors flex items-center justify-center gap-2 group" type="button">
+                            Schedule Appointment
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<div class="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row gap-8 justify-between text-sm text-text-muted">
+<div>
+<strong class="block text-text-main mb-1">Clinic</strong>
+<p>123 Medical Plaza, Suite 400<br/>Beverly Hills, CA 90210</p>
+</div>
+<div>
+<strong class="block text-text-main mb-1">Hours</strong>
+<p>Mon-Fri: 8am - 6pm<br/>Sat: 9am - 2pm</p>
+</div>
+<div>
+<strong class="block text-text-main mb-1">Contact</strong>
+<p>(310) 555-0123<br/>hello@premiumdental.com</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Side -->
+<div class="w-full lg:w-1/2 min-h-[400px] lg:min-h-auto relative bg-gray-200">
+<!-- Grayscale Map Image Simulation -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center grayscale contrast-125 opacity-80" data-alt="Map view of Beverly Hills area" data-location="Beverly Hills" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATCHN16IgY8rELN5zWIwvHAnhbM0-0JBdx0ZVbVTImhxpkoXxt_AaNZIB_wf-Ca2rx5Buyzg5HqaKj0G3sR6oyk2UptyNnWvhlhlsihrdwNj_0vBON34b2QZUa1CktsksvN154BAAUMteYb-lD3X4uYGxjwCOr4SOj1Tn-rSKuXIQ6w3Z3N1HVKxlqaavMBCI6SywwdvXgOIXIq1AYdPFIuhvKjanaEVzpRKjrj_IRumP-I9FiLUJENy7_M0VYAgeZ54vhRW1eEiSO');">
+</div>
+<!-- Map Pin Overlay -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<span class="material-symbols-outlined text-5xl text-primary drop-shadow-xl animate-bounce">location_on</span>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-2 bg-black/20 rounded-full blur-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Simple Footer -->
+<footer class="bg-text-main text-white py-8 border-t border-white/10">
+<div class="container mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-sm text-gray-400">
+                © 2024 Premium Dental. All rights reserved.
+            </div>
+<div class="flex gap-6">
+<a class="text-gray-400 hover:text-white transition-colors" href="#">Privacy</a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#">Terms</a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#">Sitemap</a>
+</div>
+</div>
+</footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('comparison-slider');
+            const overlay = document.getElementById('slider-overlay');
+            const handle = document.getElementById('slider-handle');
+            let isDown = false;
+
+            function updateSlider(x) {
+                const rect = slider.getBoundingClientRect();
+                let position = x - rect.left;
+                
+                // Clamp functionality
+                if (position < 0) position = 0;
+                if (position > rect.width) position = rect.width;
+
+                const percentage = (position / rect.width) * 100;
+
+                overlay.style.width = `${percentage}%`;
+                handle.style.left = `${percentage}%`;
+            }
+
+            function handleStart(e) {
+                isDown = true;
+                // Prevent selection/scrolling while dragging
+                // e.preventDefault(); 
+            }
+
+            function handleEnd() {
+                isDown = false;
+            }
+
+            function handleMove(e) {
+                if (!isDown) return;
+                
+                e.preventDefault();
+                const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+                updateSlider(clientX);
+            }
+
+            // Mouse Events
+            slider.addEventListener('mousedown', function(e) {
+                handleStart(e);
+                updateSlider(e.clientX);
+            });
+            window.addEventListener('mouseup', handleEnd);
+            window.addEventListener('mousemove', handleMove);
+
+            // Touch Events
+            slider.addEventListener('touchstart', function(e) {
+                handleStart(e);
+                updateSlider(e.touches[0].clientX);
+            });
+            window.addEventListener('touchend', handleEnd);
+            window.addEventListener('touchmove', handleMove);
+        });
+    </script>
+</body>
+</html>
