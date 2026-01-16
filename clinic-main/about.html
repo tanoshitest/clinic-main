@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us - Premium Dental Clinic</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11c4d4",
+                        "primary-dark": "#0e9aa7",
+                        "background-light": "#ffffff",
+                        "background-alt": "#F9FAFB",
+                        "background-dark": "#102022",
+                        "text-main": "#111718",
+                        "text-muted": "#618689",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased selection:bg-primary/30">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/20 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-lg">
+                            <span class="material-symbols-outlined text-[24px]">dentistry</span>
+                        </div>
+                        <span class="text-text-main text-xl font-bold tracking-tight">Premium<span
+                                class="text-primary">Dental</span></span>
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="services.html">Services</a>
+                    <a class="text-sm font-semibold text-primary transition-colors" href="about.html">About</a>
+                    <a class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors"
+                        href="index.html#contact">Contact</a>
+                </div>
+                <!-- CTA -->
+                <div class="hidden md:block">
+                    <button
+                        class="bg-text-main hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                        Book Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="py-32 bg-background-alt text-center">
+        <div class="container mx-auto px-6">
+            <div
+                class="flex items-center justify-center gap-2 mb-4 text-primary font-bold tracking-wider uppercase text-xs">
+                <span class="w-8 h-[2px] bg-primary"></span>
+                <span>Who We Are</span>
+            </div>
+            <h1 class="font-serif text-5xl md:text-6xl text-text-main mb-6">About Premium Dental</h1>
+            <p class="text-lg text-text-muted max-w-2xl mx-auto">Founded on the principles of integrity and innovation,
+                we have been redefining smiles for over a decade with world-class care.</p>
+        </div>
+    </header>
+
+    <!-- Clinic Info Section -->
+    <section class="py-24 bg-white dark:bg-background-dark">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
+                        <div class="absolute inset-0 bg-cover bg-center"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGEa1yjrHT3gUZkze8wetW38YT0bp__LVZZciJD-AG_wAlTFw1NuTNyr30HgIo6rz-NUYGuV-auJufJnMtq400QvmrKrrsEuja4F-raR6vua_aglrTeUdiBH3FN6cGaagSbH7SsB-qNhQ6Bi9WMl72kOezNSk3tiA7e4UIQw2hHlHgHJ_qtayennKN2eOu5ibBxxdhJHLuD99hH-jxdQ9VIRgK3MprtxzcoNoi_MEXYhYAlCVJTTcIKD7fqfa_wJ6vt0SgB6nCg-YD');">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h2 class="font-serif text-4xl text-text-main mb-6">Our Mission</h2>
+                    <p class="text-text-muted text-lg mb-6 leading-relaxed">
+                        Our mission is to provide an exceptional dental experience that combines the latest technology
+                        with a personal touch. We believe that a visit to the dentist should be comfortable,
+                        transparent, and transformative.
+                    </p>
+                    <p class="text-text-muted text-lg mb-6 leading-relaxed">
+                        From our state-of-the-art facility to our weighted blankets and noise-canceling headphones,
+                        every detail is curated to ensure your peace of mind.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div>
+                            <h4 class="text-4xl font-serif text-primary font-bold mb-1">15+</h4>
+                            <p class="text-text-main font-medium">Years Experience</p>
+                        </div>
+                        <div>
+                            <h4 class="text-4xl font-serif text-primary font-bold mb-1">5k+</h4>
+                            <p class="text-text-main font-medium">Happy Patients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section class="py-24 bg-background-alt dark:bg-background-dark/50">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl text-text-main mb-4">Meet Our Doctors</h2>
+                <p class="text-text-muted text-lg">A team of specialists dedicated to your perfect smile.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Doctor 1 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGEa1yjrHT3gUZkze8wetW38YT0bp__LVZZciJD-AG_wAlTFw1NuTNyr30HgIo6rz-NUYGuV-auJufJnMtq400QvmrKrrsEuja4F-raR6vua_aglrTeUdiBH3FN6cGaagSbH7SsB-qNhQ6Bi9WMl72kOezNSk3tiA7e4UIQw2hHlHgHJ_qtayennKN2eOu5ibBxxdhJHLuD99hH-jxdQ9VIRgK3MprtxzcoNoi_MEXYhYAlCVJTTcIKD7fqfa_wJ6vt0SgB6nCg-YD"
+                            alt="Dr. Alexander Chen"
+                            class="w-full h-full object-cover transition-transform group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. Alexander Chen</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Chief Surgeon</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Specializing in complex oral surgeries and full
+                            mouth reconstruction with over 15 years of experience.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor 2 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0KZfENicp4FgNQZ-L11HDTmxuSkQITKhgYfvtBeTT01ZmvY8djAa4CTKSONH74NPeoqI0msBVhcPZmXBajXK8y8vjHj-DLH6gdlFKccjrj8j0wUI-rmYD80wfr0jO_ZRVZ7R-R4HyfjSn74Ov1Fdh80mHAlivFO7RLdVgTGIWh10t78QxDZ_jQevHU0Z5crX8p59rvaPFuiA6cz32j4lb0DiK6Bt6CeYvWS7vb2FbdWtYiTAOlpFRhy-4dPMtImWGVdP_IdOY13TN"
+                            alt="Dr. Sarah Reynolds"
+                            class="w-full h-full object-cover transition-transform group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. Sarah Reynolds</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Orthodontist</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Expert in Invisalign and cosmetic alignment,
+                            dedicated to creating perfectly balanced smiles.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor 3 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">person</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. Michael Ross</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Cosmetic Dentist</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Renowned for his artistic approach to veneers
+                            and bonding, ensuring natural-looking results.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor 4 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">person_3</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. Emily Blunt</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Pediatric Specialist</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Making dental visits fun and fearless for
+                            children of all ages with a gentle, patient approach.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor 5 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">person_4</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. James Wilson</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Endodontist</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Specialist in saving teeth through advanced root
+                            canal therapy with minimal discomfort.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor 6 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">person_2</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. Linda Kim</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Periodontist</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Focusing on gum health and implant placement to
+                            build a strong foundation for your smile.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor 7 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">person</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. Robert Downey</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Prosthodontist</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Master of complex restorative treatments,
+                            including dentures, bridges, and full mouth rehabs.</p>
+                    </div>
+                </div>
+
+                <!-- Doctor 8 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden bg-gray-200 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-gray-300">person_3</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-text-main mb-1">Dr. Jessica Alba</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">General Dentist</p>
+                        <p class="text-text-muted text-sm line-clamp-3">Providing comprehensive preventive care and
+                            maintenance to keep your smile healthy for life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-main text-white py-8 border-t border-white/10">
+        <div class="container mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-sm text-gray-400">
+                © 2024 Premium Dental. All rights reserved.
+            </div>
+            <div class="flex gap-6">
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Privacy</a>
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Terms</a>
+                <a class="text-gray-400 hover:text-white transition-colors" href="#">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
