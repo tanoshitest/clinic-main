@@ -4,6 +4,8 @@
  * Handles Dynamic Contact Info updates from Admin Dashboard
  */
 
+console.log('main.js loaded');
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Handle Booking Form Submission
     const bookingForm = document.getElementById('booking-form');
