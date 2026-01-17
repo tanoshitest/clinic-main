@@ -74,12 +74,15 @@
                         href="blog.html">Blog</a>
                     <a class="text-sm font-semibold text-primary transition-colors" href="contact.html">Contact</a>
                 </div>
-                <!-- CTA -->
-                <div class="hidden md:block">
-                    <button
+                <!-- Right Side Actions -->
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#contact-form"
                         class="bg-text-main hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
                         Book Appointment
-                    </button>
+                    </a>
+                    <button
+                        onclick="localStorage.setItem('admin_auth', 'true'); window.location.href='admin-dashboard.html'"
+                        class="text-sm font-semibold text-text-main/80 hover:text-primary transition-colors">Login</button>
                 </div>
             </div>
         </div>
