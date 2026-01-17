@@ -89,8 +89,25 @@
             }
         }
 
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         .animate-fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-zoom-in {
+            animation: zoomIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            /* Smooth ease-out back */
         }
 
         .delay-100 {
@@ -399,7 +416,7 @@
         <div class="container mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-16 items-center">
                 <!-- Image Grid -->
-                <div class="w-full lg:w-1/2 relative">
+                <div class="w-full lg:w-1/2 relative opacity-0 zoom-reveal">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-4 pt-12">
                             <div class="aspect-[3/4] rounded-2xl bg-gray-100 overflow-hidden">
@@ -433,7 +450,7 @@
                     </div>
                 </div>
                 <!-- Content -->
-                <div class="w-full lg:w-1/2">
+                <div class="w-full lg:w-1/2 opacity-0 zoom-reveal delay-200">
                     <span
                         class="inline-block py-1 px-3 rounded-full bg-background-alt text-primary text-sm font-bold mb-6 tracking-wide uppercase border border-primary/10">Who
                         We Are</span>

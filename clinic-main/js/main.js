@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // For this demo, let's look for specific placeholders if we can, or just rely on the Admin structure.
     }
 
-    // 4. Scroll Reveal Animation for Services Section
+    // 4. Scroll Reveal Animation for Services and About Section
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -265,14 +265,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add the animation class
-                entry.target.classList.add('animate-fade-in-up');
-                // Don't remove opacity-0 immediately if the animation handles opacity, 
-                // BUT the animation keyframes start from opacity: 0. 
-                // If opacity-0 utility class has !important or high specificity, it might conflict?
-                // Tailwind's opacity-0 is just opacity: 0.
-                // Keyframes override inline/class styles often if defined well.
-                // However, to be safe, let's remove opacity-0 so the animation takes full control.
+                // Determine animation class
+                if (entry.target.classList.contains('zoom-reveal')) {
+                    entry.target.classList.add('animate-zoom-in');
+                } else {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+
+                // Remove opacity-0 so animation takes over
                 entry.target.classList.remove('opacity-0');
 
                 observer.unobserve(entry.target);
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const scrollElements = document.querySelectorAll('.scroll-reveal');
+    const scrollElements = document.querySelectorAll('.scroll-reveal, .zoom-reveal');
     scrollElements.forEach(el => observer.observe(el));
 });
 
